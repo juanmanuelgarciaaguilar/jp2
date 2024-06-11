@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna</title>
+<style>
+    canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+</head>
+<body>
+<canvas id="lunaCanvas"></canvas>
+
+<script>
+    // Obtener el contexto del lienzo
+    var canvas = document.getElementById('lunaCanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Configurar el tamaño del lienzo
+    canvas.width = 800;
+    canvas.height = 600;
+
+    // Dibujar la luna
+    function drawMoon() {
+        ctx.beginPath();
+        ctx.arc(400, 300, 200, 0, Math.PI * 2);
+        ctx.fillStyle = 'gray'; // Color gris para la luna
+        ctx.fill();
+    }
+
+    // Dibujar el suelo
+    function drawGround() {
+        ctx.fillStyle = '#333'; // Color gris oscuro para el suelo
+        ctx.fillRect(0, 400, 800, 200);
+    }
+
+    // Dibujar las estrellas
+    function drawStars() {
+        for (var i = 0; i < 100; i++) {
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height * 0.4;
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = 'white'; // Color blanco para las estrellas
+            ctx.fill();
+        }
+    }
+
+    // Dibujar el escenario completo
+    function drawScene() {
+        drawMoon();
+        drawGround();
+        drawStars();
+    }
+
+    // Llamar a la función para dibujar el escenario
+    drawScene();
+</script>
+</body>
+</html>
